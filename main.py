@@ -1,5 +1,6 @@
 n = int(input())
 counter = 0  # coins
+i_counter = 0
 answer = True
 boardMatrix = []
 for i in range(n):
@@ -73,6 +74,7 @@ for direction in movement:
             answer = False
         boardMatrix[pX][pY] = "E"
         #print(pX, pY)
+    i_counter += 1
 
 monster_movement_coordinates = []
 general_all_monsters_combined_array = []
