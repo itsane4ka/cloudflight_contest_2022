@@ -1,5 +1,6 @@
 n = int(input())
 counter = 0  # coins
+answer = True
 boardMatrix = []
 for i in range(n):
     boardMatrix.append(list(input()))
@@ -37,7 +38,8 @@ for direction in movement:
         #print(boardMatrix[pX][pY])
         if boardMatrix[pX][pY] == "C":
             counter += 1
-            #print(pX, pY)
+        elif boardMatrix[pX][pY] == "W":
+            answer = False
         boardMatrix[pX][pY] = "E"
 
     elif direction == "D":
@@ -46,7 +48,8 @@ for direction in movement:
         #print(boardMatrix[pX][pY])
         if boardMatrix[pX][pY] == "C":
             counter += 1
-            #print(pX, pY)
+        elif boardMatrix[pX][pY] == "W":
+            answer = False
         boardMatrix[pX][pY] = "E"
         #print(pX, pY)
     elif direction == "L":
@@ -55,6 +58,8 @@ for direction in movement:
         #print(boardMatrix[pX][pY])
         if boardMatrix[pX][pY] == "C":
             counter += 1
+        elif boardMatrix[pX][pY] == "W":
+            answer = False
             #print(pX, pY)
         boardMatrix[pX][pY] = "E"
         #print(pX, pY)
@@ -64,7 +69,8 @@ for direction in movement:
         #print(boardMatrix[pX][pY])
         if boardMatrix[pX][pY] == "C":
             counter += 1
-            #print(pX, pY)
+        elif boardMatrix[pX][pY] == "W":
+            answer = False
         boardMatrix[pX][pY] = "E"
         #print(pX, pY)
 
@@ -99,19 +105,19 @@ for gX_start, gY_start, gMovement in zip(gXarray, gYarray, gMoveArray):
 #print(sequenceLength, movement)
 #print(140, 125, 660, 653, 762)
 #print(5, 16, 40, 26, 129)
-i_counter = 0
-answer = True
-for pacman_path in massivPacman:
-    for monsters_path in general_all_monsters_combined_array:
-        print(i_counter)
-        print(monsters_path)
+if answer is True:
+    i_counter = 0
+    for pacman_path in massivPacman:
+        for monsters_path in general_all_monsters_combined_array:
+            print(i_counter)
+            print(monsters_path)
 
-        if monsters_path[i_counter][0] == pacman_path[0] and monsters_path[i_counter][1] == pacman_path[1]:
-            answer = False
+            if monsters_path[i_counter][0] == pacman_path[0] and monsters_path[i_counter][1] == pacman_path[1]:
+                answer = False
+                break
+        if answer is False:
             break
-    if answer is False:
-        break
-    i_counter += 1
+        i_counter += 1
 
 counter_pidor = 0
 if answer is True:
@@ -121,7 +127,7 @@ else:
         print("i_counter: ", i_counter)
         print("counter_pidor: ", counter_pidor)
         if counter_pidor == i_counter:
-            print(counter_pidor, "NO")
+            print(counter, "NO")
             exit()
         else:
             if direction == "U":
