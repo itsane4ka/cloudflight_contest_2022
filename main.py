@@ -118,11 +118,10 @@ if answer is True:
     print(counter, "YES")
 else:
     for direction in movement:
-        counter_pidor += 1
         print("i_counter: ", i_counter)
         print("counter_pidor: ", counter_pidor)
         if counter_pidor == i_counter:
-            print(counter, "NO")
+            print(counter_pidor, "NO")
             exit()
         else:
             if direction == "U":
@@ -160,4 +159,4 @@ else:
                     counter += 1
                     # print(pX, pY)
                 boardMatrix[pX][pY] = "E"
-                # print(pX, pY)
+        counter_pidor += 1
